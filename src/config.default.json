@@ -1,0 +1,6 @@
+{
+    "httpserverurl":"127.0.0.1",
+    "httpserverport":18000,
+    "websocketserverurl":"127.0.0.1",
+    "websocketserverport":"3390"
+}

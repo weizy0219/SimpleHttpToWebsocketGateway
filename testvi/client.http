@@ -1,0 +1,34 @@
+
+###
+GET http://127.0.0.1:18000
+
+###
+GET http://127.0.0.1:18000/v1/query/3
+
+###
+POST http://127.0.0.1:18000/v1/sendws/
+Content-Type: application/json
+
+ {
+     "address": "Example Street 1, Big City",
+     "load": "first"
+ }
+
+###
+POST http://127.0.0.1:18000/v1/sendws/
+Content-Type: application/json
+
+ {
+     "address": "Example Street 1, Big City",
+     "load": "second"
+ }
+
+ 
+###
+POST http://127.0.0.1:18000/v1/sendws/
+Content-Type: application/json
+
+ {
+     "address": "Example Street 1, Big City",
+     "load": "last"
+ }
