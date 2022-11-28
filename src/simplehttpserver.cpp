@@ -64,6 +64,22 @@ void SimpleHttpServer::initRoutes(int port){
         }
         return QHttpServerResponse(reqObject);
     });
+
+    //post到 /v1/command/路径的请求,可以根据指令操作httpgateway网关程序运行或退出
+    //其他内容暂时未做处理
+    //post请求和返回值都为 JSON 格式，其中用户收到服务器的消息与发送消息相同，用于显示服务器收到相关消息
+    m_simpleHttpServer.route("/v1/command/",QHttpServerRequest::Method::Post,[this](const QHttpServerRequest &request){
+        const QJsonObject reqObject=byteArrayToJsonObject(request.body());
+        if(m_debug){
+            qDebug()<<"request is"<<reqObject<<Qt::endl;
+        }
+        if(reqObject.contains("load")&&reqObject["load"].isString()){
+            QString cmd=reqObject["load"].toString();
+            if(cmd=="exit")
+                emit receiveExitCmd(cmd);
+        }
+        return QHttpServerResponse(reqObject);
+    });
 }
 //just for test purpose
 void SimpleHttpServer::onTestId(int &newId){

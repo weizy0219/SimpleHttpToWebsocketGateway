@@ -32,3 +32,20 @@ Content-Type: application/json
      "address": "Example Street 1, Big City",
      "load": "last"
  }
+
+###
+POST http://127.0.0.1:18000/v1/command/
+Content-Type: application/json
+
+ {
+     "load": "exit"
+ }
+
+###
+
+POST http://127.0.0.1:18000/v1/command/
+Content-Type: application/json
+
+ {
+     "load": "restart"
+ }

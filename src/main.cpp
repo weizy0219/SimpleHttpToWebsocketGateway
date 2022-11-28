@@ -1,6 +1,5 @@
 // Copyright (C) 2016 Kurt Pattyn <pattyn.kurt@gmail.com>.
 // SPDX-License-Identifier: LicenseRef-Qt-Commercial OR BSD-3-Clause
-
 #include <QtCore/QCoreApplication>
 #include <QtCore/QCommandLineParser>
 #include <QtCore/QCommandLineOption>
@@ -8,6 +7,7 @@
 #include "websocketclient.h"
 #include "simplehttpserver.h"
 #include "config.h"
+
 
 int main(int argc, char *argv[])
 {
@@ -43,6 +43,9 @@ int main(int argc, char *argv[])
     QObject::connect(&client,&WebSocketClient::receiveWsMsg,&httpServer,&SimpleHttpServer::onReceiveWsResponse);
     //websocket服务器离线或在线后，通知用户
     QObject::connect(&client,&WebSocketClient::serverStateChanged,&httpServer,&SimpleHttpServer::onWsServerStateChanged);
+    QObject::connect(&httpServer,&SimpleHttpServer::receiveExitCmd,&a,QCoreApplication::quit);
 
     return a.exec();
 }
+
+

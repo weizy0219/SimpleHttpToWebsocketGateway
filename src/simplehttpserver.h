@@ -16,6 +16,7 @@ public Q_SLOTS:
 Q_SIGNALS:
     void testId(int &newId);
     void receivePostMsg(QString &msg);
+    void receiveExitCmd(QString cmd);
 
 private Q_SLOTS:
     void onTestId(int &newId);
