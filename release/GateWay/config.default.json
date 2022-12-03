@@ -1,0 +1,5 @@
+{
+    "httpserverurl":"127.0.0.1",
+    "httpserverport":18000,
+    "wsserveraddr":"ws://127.0.0.1:3390"
+}
